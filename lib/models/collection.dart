@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:home_cooked/models/recipe.dart';
 import 'package:home_cooked/models/user.dart';
-import 'package:pocketbase/pocketbase.dart';
 
 part 'collection.freezed.dart';
 part 'collection.g.dart';

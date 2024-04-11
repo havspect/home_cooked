@@ -43,8 +43,8 @@ app.*.map.json
 /android/app/release
 
 # Pocket Base 
-/backend/pb_data
+/backend/pb_data/
 /backend/pocketbase.exe 
 /backend/pocketbase.sh 
-/backend/pocketbase 
+/backend/pocketbase
 

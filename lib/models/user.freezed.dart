@@ -197,3 +197,196 @@ abstract class _User implements User {
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+NewUser _$NewUserFromJson(Map<String, dynamic> json) {
+  return _NewUser.fromJson(json);
+}
+
+/// @nodoc
+mixin _$NewUser {
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get passwordConfirm => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NewUserCopyWith<NewUser> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NewUserCopyWith<$Res> {
+  factory $NewUserCopyWith(NewUser value, $Res Function(NewUser) then) =
+      _$NewUserCopyWithImpl<$Res, NewUser>;
+  @useResult
+  $Res call(
+      {String email, String password, String passwordConfirm, String name});
+}
+
+/// @nodoc
+class _$NewUserCopyWithImpl<$Res, $Val extends NewUser>
+    implements $NewUserCopyWith<$Res> {
+  _$NewUserCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirm = null,
+    Object? name = null,
+  }) {
+    return _then(_value.copyWith(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirm: null == passwordConfirm
+          ? _value.passwordConfirm
+          : passwordConfirm // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$NewUserImplCopyWith<$Res> implements $NewUserCopyWith<$Res> {
+  factory _$$NewUserImplCopyWith(
+          _$NewUserImpl value, $Res Function(_$NewUserImpl) then) =
+      __$$NewUserImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String email, String password, String passwordConfirm, String name});
+}
+
+/// @nodoc
+class __$$NewUserImplCopyWithImpl<$Res>
+    extends _$NewUserCopyWithImpl<$Res, _$NewUserImpl>
+    implements _$$NewUserImplCopyWith<$Res> {
+  __$$NewUserImplCopyWithImpl(
+      _$NewUserImpl _value, $Res Function(_$NewUserImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? email = null,
+    Object? password = null,
+    Object? passwordConfirm = null,
+    Object? name = null,
+  }) {
+    return _then(_$NewUserImpl(
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordConfirm: null == passwordConfirm
+          ? _value.passwordConfirm
+          : passwordConfirm // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$NewUserImpl implements _NewUser {
+  _$NewUserImpl(
+      {required this.email,
+      required this.password,
+      required this.passwordConfirm,
+      required this.name});
+
+  factory _$NewUserImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NewUserImplFromJson(json);
+
+  @override
+  final String email;
+  @override
+  final String password;
+  @override
+  final String passwordConfirm;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'NewUser(email: $email, password: $password, passwordConfirm: $passwordConfirm, name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewUserImpl &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.passwordConfirm, passwordConfirm) ||
+                other.passwordConfirm == passwordConfirm) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, email, password, passwordConfirm, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewUserImplCopyWith<_$NewUserImpl> get copyWith =>
+      __$$NewUserImplCopyWithImpl<_$NewUserImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewUserImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _NewUser implements NewUser {
+  factory _NewUser(
+      {required final String email,
+      required final String password,
+      required final String passwordConfirm,
+      required final String name}) = _$NewUserImpl;
+
+  factory _NewUser.fromJson(Map<String, dynamic> json) = _$NewUserImpl.fromJson;
+
+  @override
+  String get email;
+  @override
+  String get password;
+  @override
+  String get passwordConfirm;
+  @override
+  String get name;
+  @override
+  @JsonKey(ignore: true)
+  _$$NewUserImplCopyWith<_$NewUserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

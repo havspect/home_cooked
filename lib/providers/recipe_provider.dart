@@ -36,7 +36,6 @@ class RecipeList extends _$RecipeList {
       await pb.collection('recipes').create(body: recipe.toJson());
 
       ref.invalidateSelf();
-
       await future;
     } catch (e) {
       rethrow;

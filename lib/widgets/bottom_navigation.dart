@@ -39,7 +39,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         onTap: changeTab,
-        backgroundColor: const Color(0xffe0b9f6),
         currentIndex: currentIndex,
         items: const [
           BottomNavigationBarItem(

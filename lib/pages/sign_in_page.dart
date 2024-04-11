@@ -1,24 +1,107 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:home_cooked/models/recipe.dart';
-import 'package:home_cooked/providers/recipe_provider.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:home_cooked/main.dart';
+import 'package:pocketbase/pocketbase.dart';
 
-class SignInPage extends ConsumerWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // We can therefore keep using "ref.watch" inside "build".
+  State<SignInPage> createState() => _SignInPageState();
+}
 
-    return Center(
-      child: ElevatedButton(
-          onPressed: () {
-            ref
-                .read(recipeListProvider.notifier)
-                .addRecipe(NewRecipe(title: "title"));
-          },
-          child: Text('Add Recipe')),
-    );
+class _SignInPageState extends State<SignInPage> {
+  final email = TextEditingController();
+  final password = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  // @override
+  // void dispose() {
+  //   // Clean up the controller when the widget is disposed.
+  //   email.dispose();
+  //   password.dispose();
+  //   super.dispose();
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: Form(
+      key: _formKey,
+      child: Container(
+        constraints: new BoxConstraints(maxWidth: 400),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Login",
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                  decoration: const InputDecoration(
+                      border: UnderlineInputBorder(), labelText: "E-Mail"),
+                  controller: email),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                decoration: const InputDecoration(
+                    border: UnderlineInputBorder(), labelText: "Password"),
+                controller: password,
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                        foregroundColor:
+                            Theme.of(context).colorScheme.onSecondary),
+                    onPressed: () {
+                      context.go('/sign-up');
+                    },
+                    child: const Text('Sign up')),
+                const SizedBox(
+                  width: 15,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    // Validate returns true if the form is valid, or false otherwise.
+                    if (_formKey.currentState!.validate()) {
+                      // If the form is valid, display a snackbar. In the real world,
+                      // you'd often call a server or save the information in a database.
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Processing Data')),
+                      );
+
+                      final pb = getIt<PocketBase>();
+
+                      try {
+                        await pb.collection('users').authWithPassword(
+                            email.value.text, password.value.text);
+                        context.go('/recipes');
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Failed to log in.')),
+                        );
+                      }
+                    }
+                  },
+                  child: const Text('Submit'),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    )));
   }
 }

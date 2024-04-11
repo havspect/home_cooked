@@ -20,3 +20,19 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'email': instance.email,
       'name': instance.name,
     };
+
+_$NewUserImpl _$$NewUserImplFromJson(Map<String, dynamic> json) =>
+    _$NewUserImpl(
+      email: json['email'] as String,
+      password: json['password'] as String,
+      passwordConfirm: json['passwordConfirm'] as String,
+      name: json['name'] as String,
+    );
+
+Map<String, dynamic> _$$NewUserImplToJson(_$NewUserImpl instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'password': instance.password,
+      'passwordConfirm': instance.passwordConfirm,
+      'name': instance.name,
+    };

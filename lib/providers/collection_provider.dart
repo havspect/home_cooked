@@ -18,12 +18,8 @@ class CollectionList extends _$CollectionList {
           .collection('collections')
           .getList(expand: 'recipes,owner,users');
 
-      print(res);
-
       final collections =
           res.items.map((e) => Collection.fromJson(e.toJson())).toList();
-
-      print(collections);
 
       return collections;
     } catch (e) {

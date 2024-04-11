@@ -16,7 +16,7 @@ class RecipeListPage extends ConsumerWidget {
             padding: const EdgeInsets.all(8),
             itemCount: value.length,
             itemBuilder: (BuildContext context, int index) {
-              return Container(
+              return SizedBox(
                 height: 50,
                 child: Center(child: Text('Entry ${value[index]}')),
               );
