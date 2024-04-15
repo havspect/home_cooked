@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_cooked/models/recipe.dart';
-import 'package:home_cooked/providers/recipe_provider.dart';
+import 'package:home_cooked/providers/recipe_list_provider.dart';
 
 class RecipeListPage extends ConsumerWidget {
   const RecipeListPage({super.key});

@@ -48,11 +48,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           useMaterial3: true,
           colorScheme: lightColorScheme,
-          textTheme: GoogleFonts.robotoMonoTextTheme()),
+          textTheme: GoogleFonts.robotoTextTheme()),
       darkTheme: ThemeData(
           useMaterial3: true,
           colorScheme: darkColorScheme,
-          textTheme: GoogleFonts.robotoMonoTextTheme()),
+          textTheme: GoogleFonts.robotoTextTheme()),
       routerConfig: router,
     );
   }

@@ -22,7 +22,10 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) {
 mixin _$Recipe {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
+  String? get source => throw _privateConstructorUsedError;
   String? get link => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +37,13 @@ abstract class $RecipeCopyWith<$Res> {
   factory $RecipeCopyWith(Recipe value, $Res Function(Recipe) then) =
       _$RecipeCopyWithImpl<$Res, Recipe>;
   @useResult
-  $Res call({String id, String title, String? link});
+  $Res call(
+      {String id,
+      String title,
+      String? text,
+      String? source,
+      String? link,
+      String? image});
 }
 
 /// @nodoc
@@ -52,7 +61,10 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? text = freezed,
+    Object? source = freezed,
     Object? link = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -63,9 +75,21 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+      source: freezed == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String?,
       link: freezed == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -78,7 +102,13 @@ abstract class _$$RecipeImplCopyWith<$Res> implements $RecipeCopyWith<$Res> {
       __$$RecipeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title, String? link});
+  $Res call(
+      {String id,
+      String title,
+      String? text,
+      String? source,
+      String? link,
+      String? image});
 }
 
 /// @nodoc
@@ -94,7 +124,10 @@ class __$$RecipeImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? text = freezed,
+    Object? source = freezed,
     Object? link = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$RecipeImpl(
       id: null == id
@@ -105,9 +138,21 @@ class __$$RecipeImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+      source: freezed == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String?,
       link: freezed == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -116,7 +161,13 @@ class __$$RecipeImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RecipeImpl implements _Recipe {
-  _$RecipeImpl({required this.id, required this.title, this.link});
+  _$RecipeImpl(
+      {required this.id,
+      required this.title,
+      this.text,
+      this.source,
+      this.link,
+      this.image});
 
   factory _$RecipeImpl.fromJson(Map<String, dynamic> json) =>
       _$$RecipeImplFromJson(json);
@@ -126,11 +177,17 @@ class _$RecipeImpl implements _Recipe {
   @override
   final String title;
   @override
+  final String? text;
+  @override
+  final String? source;
+  @override
   final String? link;
+  @override
+  final String? image;
 
   @override
   String toString() {
-    return 'Recipe(id: $id, title: $title, link: $link)';
+    return 'Recipe(id: $id, title: $title, text: $text, source: $source, link: $link, image: $image)';
   }
 
   @override
@@ -140,12 +197,16 @@ class _$RecipeImpl implements _Recipe {
             other is _$RecipeImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.link, link) || other.link == link));
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.source, source) || other.source == source) &&
+            (identical(other.link, link) || other.link == link) &&
+            (identical(other.image, image) || other.image == image));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, link);
+  int get hashCode =>
+      Object.hash(runtimeType, id, title, text, source, link, image);
 
   @JsonKey(ignore: true)
   @override
@@ -165,7 +226,10 @@ abstract class _Recipe implements Recipe {
   factory _Recipe(
       {required final String id,
       required final String title,
-      final String? link}) = _$RecipeImpl;
+      final String? text,
+      final String? source,
+      final String? link,
+      final String? image}) = _$RecipeImpl;
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$RecipeImpl.fromJson;
 
@@ -174,7 +238,13 @@ abstract class _Recipe implements Recipe {
   @override
   String get title;
   @override
+  String? get text;
+  @override
+  String? get source;
+  @override
   String? get link;
+  @override
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$RecipeImplCopyWith<_$RecipeImpl> get copyWith =>
@@ -189,6 +259,8 @@ NewRecipe _$NewRecipeFromJson(Map<String, dynamic> json) {
 mixin _$NewRecipe {
   String get title => throw _privateConstructorUsedError;
   String? get link => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
+  String? get source => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -201,7 +273,7 @@ abstract class $NewRecipeCopyWith<$Res> {
   factory $NewRecipeCopyWith(NewRecipe value, $Res Function(NewRecipe) then) =
       _$NewRecipeCopyWithImpl<$Res, NewRecipe>;
   @useResult
-  $Res call({String title, String? link});
+  $Res call({String title, String? link, String? text, String? source});
 }
 
 /// @nodoc
@@ -219,6 +291,8 @@ class _$NewRecipeCopyWithImpl<$Res, $Val extends NewRecipe>
   $Res call({
     Object? title = null,
     Object? link = freezed,
+    Object? text = freezed,
+    Object? source = freezed,
   }) {
     return _then(_value.copyWith(
       title: null == title
@@ -228,6 +302,14 @@ class _$NewRecipeCopyWithImpl<$Res, $Val extends NewRecipe>
       link: freezed == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
+              as String?,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+      source: freezed == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -241,7 +323,7 @@ abstract class _$$NewRecipeImplCopyWith<$Res>
       __$$NewRecipeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String? link});
+  $Res call({String title, String? link, String? text, String? source});
 }
 
 /// @nodoc
@@ -257,6 +339,8 @@ class __$$NewRecipeImplCopyWithImpl<$Res>
   $Res call({
     Object? title = null,
     Object? link = freezed,
+    Object? text = freezed,
+    Object? source = freezed,
   }) {
     return _then(_$NewRecipeImpl(
       title: null == title
@@ -267,6 +351,14 @@ class __$$NewRecipeImplCopyWithImpl<$Res>
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String?,
+      text: freezed == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
+              as String?,
+      source: freezed == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -274,7 +366,7 @@ class __$$NewRecipeImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$NewRecipeImpl implements _NewRecipe {
-  _$NewRecipeImpl({required this.title, this.link});
+  _$NewRecipeImpl({required this.title, this.link, this.text, this.source});
 
   factory _$NewRecipeImpl.fromJson(Map<String, dynamic> json) =>
       _$$NewRecipeImplFromJson(json);
@@ -283,10 +375,14 @@ class _$NewRecipeImpl implements _NewRecipe {
   final String title;
   @override
   final String? link;
+  @override
+  final String? text;
+  @override
+  final String? source;
 
   @override
   String toString() {
-    return 'NewRecipe(title: $title, link: $link)';
+    return 'NewRecipe(title: $title, link: $link, text: $text, source: $source)';
   }
 
   @override
@@ -295,12 +391,14 @@ class _$NewRecipeImpl implements _NewRecipe {
         (other.runtimeType == runtimeType &&
             other is _$NewRecipeImpl &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.link, link) || other.link == link));
+            (identical(other.link, link) || other.link == link) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.source, source) || other.source == source));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, link);
+  int get hashCode => Object.hash(runtimeType, title, link, text, source);
 
   @JsonKey(ignore: true)
   @override
@@ -317,8 +415,11 @@ class _$NewRecipeImpl implements _NewRecipe {
 }
 
 abstract class _NewRecipe implements NewRecipe {
-  factory _NewRecipe({required final String title, final String? link}) =
-      _$NewRecipeImpl;
+  factory _NewRecipe(
+      {required final String title,
+      final String? link,
+      final String? text,
+      final String? source}) = _$NewRecipeImpl;
 
   factory _NewRecipe.fromJson(Map<String, dynamic> json) =
       _$NewRecipeImpl.fromJson;
@@ -327,6 +428,10 @@ abstract class _NewRecipe implements NewRecipe {
   String get title;
   @override
   String? get link;
+  @override
+  String? get text;
+  @override
+  String? get source;
   @override
   @JsonKey(ignore: true)
   _$$NewRecipeImplCopyWith<_$NewRecipeImpl> get copyWith =>

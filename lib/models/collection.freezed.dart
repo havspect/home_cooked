@@ -20,6 +20,7 @@ Collection _$CollectionFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Collection {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   CollectionExpanded? get expand => throw _privateConstructorUsedError;
@@ -36,7 +37,11 @@ abstract class $CollectionCopyWith<$Res> {
           Collection value, $Res Function(Collection) then) =
       _$CollectionCopyWithImpl<$Res, Collection>;
   @useResult
-  $Res call({String title, String? description, CollectionExpanded? expand});
+  $Res call(
+      {String id,
+      String title,
+      String? description,
+      CollectionExpanded? expand});
 
   $CollectionExpandedCopyWith<$Res>? get expand;
 }
@@ -54,11 +59,16 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = freezed,
     Object? expand = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -95,7 +105,11 @@ abstract class _$$CollectionImplCopyWith<$Res>
       __$$CollectionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String title, String? description, CollectionExpanded? expand});
+  $Res call(
+      {String id,
+      String title,
+      String? description,
+      CollectionExpanded? expand});
 
   @override
   $CollectionExpandedCopyWith<$Res>? get expand;
@@ -112,11 +126,16 @@ class __$$CollectionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = freezed,
     Object? expand = freezed,
   }) {
     return _then(_$CollectionImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -137,11 +156,14 @@ class __$$CollectionImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$CollectionImpl implements _Collection {
-  _$CollectionImpl({required this.title, this.description, this.expand});
+  _$CollectionImpl(
+      {required this.id, required this.title, this.description, this.expand});
 
   factory _$CollectionImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionImplFromJson(json);
 
+  @override
+  final String id;
   @override
   final String title;
   @override
@@ -151,7 +173,7 @@ class _$CollectionImpl implements _Collection {
 
   @override
   String toString() {
-    return 'Collection(title: $title, description: $description, expand: $expand)';
+    return 'Collection(id: $id, title: $title, description: $description, expand: $expand)';
   }
 
   @override
@@ -159,6 +181,7 @@ class _$CollectionImpl implements _Collection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CollectionImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -167,7 +190,7 @@ class _$CollectionImpl implements _Collection {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, expand);
+  int get hashCode => Object.hash(runtimeType, id, title, description, expand);
 
   @JsonKey(ignore: true)
   @override
@@ -185,13 +208,16 @@ class _$CollectionImpl implements _Collection {
 
 abstract class _Collection implements Collection {
   factory _Collection(
-      {required final String title,
+      {required final String id,
+      required final String title,
       final String? description,
       final CollectionExpanded? expand}) = _$CollectionImpl;
 
   factory _Collection.fromJson(Map<String, dynamic> json) =
       _$CollectionImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get title;
   @override
@@ -411,5 +437,178 @@ abstract class _CollectionExpanded implements CollectionExpanded {
   @override
   @JsonKey(ignore: true)
   _$$CollectionExpandedImplCopyWith<_$CollectionExpandedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+NewCollection _$NewCollectionFromJson(Map<String, dynamic> json) {
+  return _NewCollection.fromJson(json);
+}
+
+/// @nodoc
+mixin _$NewCollection {
+  String get title => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String get owner => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $NewCollectionCopyWith<NewCollection> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $NewCollectionCopyWith<$Res> {
+  factory $NewCollectionCopyWith(
+          NewCollection value, $Res Function(NewCollection) then) =
+      _$NewCollectionCopyWithImpl<$Res, NewCollection>;
+  @useResult
+  $Res call({String title, String? description, String owner});
+}
+
+/// @nodoc
+class _$NewCollectionCopyWithImpl<$Res, $Val extends NewCollection>
+    implements $NewCollectionCopyWith<$Res> {
+  _$NewCollectionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? description = freezed,
+    Object? owner = null,
+  }) {
+    return _then(_value.copyWith(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$NewCollectionImplCopyWith<$Res>
+    implements $NewCollectionCopyWith<$Res> {
+  factory _$$NewCollectionImplCopyWith(
+          _$NewCollectionImpl value, $Res Function(_$NewCollectionImpl) then) =
+      __$$NewCollectionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String title, String? description, String owner});
+}
+
+/// @nodoc
+class __$$NewCollectionImplCopyWithImpl<$Res>
+    extends _$NewCollectionCopyWithImpl<$Res, _$NewCollectionImpl>
+    implements _$$NewCollectionImplCopyWith<$Res> {
+  __$$NewCollectionImplCopyWithImpl(
+      _$NewCollectionImpl _value, $Res Function(_$NewCollectionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? title = null,
+    Object? description = freezed,
+    Object? owner = null,
+  }) {
+    return _then(_$NewCollectionImpl(
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$NewCollectionImpl implements _NewCollection {
+  _$NewCollectionImpl(
+      {required this.title, this.description, required this.owner});
+
+  factory _$NewCollectionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NewCollectionImplFromJson(json);
+
+  @override
+  final String title;
+  @override
+  final String? description;
+  @override
+  final String owner;
+
+  @override
+  String toString() {
+    return 'NewCollection(title: $title, description: $description, owner: $owner)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewCollectionImpl &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.owner, owner) || other.owner == owner));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, title, description, owner);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewCollectionImplCopyWith<_$NewCollectionImpl> get copyWith =>
+      __$$NewCollectionImplCopyWithImpl<_$NewCollectionImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NewCollectionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _NewCollection implements NewCollection {
+  factory _NewCollection(
+      {required final String title,
+      final String? description,
+      required final String owner}) = _$NewCollectionImpl;
+
+  factory _NewCollection.fromJson(Map<String, dynamic> json) =
+      _$NewCollectionImpl.fromJson;
+
+  @override
+  String get title;
+  @override
+  String? get description;
+  @override
+  String get owner;
+  @override
+  @JsonKey(ignore: true)
+  _$$NewCollectionImplCopyWith<_$NewCollectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recipe_provider.dart';
+part of 'weekplan_recipes_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recipeEntryHash() => r'0296115135bc2e724b742cd4f580063dcda0b61c';
+String _$weekplanRecipesListHash() =>
+    r'7159e1affd70d94719021198f6ab5c96c1befd73';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,35 +30,37 @@ class _SystemHash {
   }
 }
 
-abstract class _$RecipeEntry extends BuildlessAutoDisposeAsyncNotifier<Recipe> {
+abstract class _$WeekplanRecipesList
+    extends BuildlessAutoDisposeAsyncNotifier<List<WeekplanRecipes>> {
   late final String id;
 
-  FutureOr<Recipe> build(
+  FutureOr<List<WeekplanRecipes>> build(
     String id,
   );
 }
 
-/// See also [RecipeEntry].
-@ProviderFor(RecipeEntry)
-const recipeEntryProvider = RecipeEntryFamily();
+/// See also [WeekplanRecipesList].
+@ProviderFor(WeekplanRecipesList)
+const weekplanRecipesListProvider = WeekplanRecipesListFamily();
 
-/// See also [RecipeEntry].
-class RecipeEntryFamily extends Family<AsyncValue<Recipe>> {
-  /// See also [RecipeEntry].
-  const RecipeEntryFamily();
+/// See also [WeekplanRecipesList].
+class WeekplanRecipesListFamily
+    extends Family<AsyncValue<List<WeekplanRecipes>>> {
+  /// See also [WeekplanRecipesList].
+  const WeekplanRecipesListFamily();
 
-  /// See also [RecipeEntry].
-  RecipeEntryProvider call(
+  /// See also [WeekplanRecipesList].
+  WeekplanRecipesListProvider call(
     String id,
   ) {
-    return RecipeEntryProvider(
+    return WeekplanRecipesListProvider(
       id,
     );
   }
 
   @override
-  RecipeEntryProvider getProviderOverride(
-    covariant RecipeEntryProvider provider,
+  WeekplanRecipesListProvider getProviderOverride(
+    covariant WeekplanRecipesListProvider provider,
   ) {
     return call(
       provider.id,
@@ -76,30 +79,30 @@ class RecipeEntryFamily extends Family<AsyncValue<Recipe>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'recipeEntryProvider';
+  String? get name => r'weekplanRecipesListProvider';
 }
 
-/// See also [RecipeEntry].
-class RecipeEntryProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<RecipeEntry, Recipe> {
-  /// See also [RecipeEntry].
-  RecipeEntryProvider(
+/// See also [WeekplanRecipesList].
+class WeekplanRecipesListProvider extends AutoDisposeAsyncNotifierProviderImpl<
+    WeekplanRecipesList, List<WeekplanRecipes>> {
+  /// See also [WeekplanRecipesList].
+  WeekplanRecipesListProvider(
     String id,
   ) : this._internal(
-          () => RecipeEntry()..id = id,
-          from: recipeEntryProvider,
-          name: r'recipeEntryProvider',
+          () => WeekplanRecipesList()..id = id,
+          from: weekplanRecipesListProvider,
+          name: r'weekplanRecipesListProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$recipeEntryHash,
-          dependencies: RecipeEntryFamily._dependencies,
+                  : _$weekplanRecipesListHash,
+          dependencies: WeekplanRecipesListFamily._dependencies,
           allTransitiveDependencies:
-              RecipeEntryFamily._allTransitiveDependencies,
+              WeekplanRecipesListFamily._allTransitiveDependencies,
           id: id,
         );
 
-  RecipeEntryProvider._internal(
+  WeekplanRecipesListProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -112,8 +115,8 @@ class RecipeEntryProvider
   final String id;
 
   @override
-  FutureOr<Recipe> runNotifierBuild(
-    covariant RecipeEntry notifier,
+  FutureOr<List<WeekplanRecipes>> runNotifierBuild(
+    covariant WeekplanRecipesList notifier,
   ) {
     return notifier.build(
       id,
@@ -121,10 +124,10 @@ class RecipeEntryProvider
   }
 
   @override
-  Override overrideWith(RecipeEntry Function() create) {
+  Override overrideWith(WeekplanRecipesList Function() create) {
     return ProviderOverride(
       origin: this,
-      override: RecipeEntryProvider._internal(
+      override: WeekplanRecipesListProvider._internal(
         () => create()..id = id,
         from: from,
         name: null,
@@ -137,13 +140,14 @@ class RecipeEntryProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<RecipeEntry, Recipe> createElement() {
-    return _RecipeEntryProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<WeekplanRecipesList,
+      List<WeekplanRecipes>> createElement() {
+    return _WeekplanRecipesListProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is RecipeEntryProvider && other.id == id;
+    return other is WeekplanRecipesListProvider && other.id == id;
   }
 
   @override
@@ -155,18 +159,19 @@ class RecipeEntryProvider
   }
 }
 
-mixin RecipeEntryRef on AutoDisposeAsyncNotifierProviderRef<Recipe> {
+mixin WeekplanRecipesListRef
+    on AutoDisposeAsyncNotifierProviderRef<List<WeekplanRecipes>> {
   /// The parameter `id` of this provider.
   String get id;
 }
 
-class _RecipeEntryProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<RecipeEntry, Recipe>
-    with RecipeEntryRef {
-  _RecipeEntryProviderElement(super.provider);
+class _WeekplanRecipesListProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<WeekplanRecipesList,
+        List<WeekplanRecipes>> with WeekplanRecipesListRef {
+  _WeekplanRecipesListProviderElement(super.provider);
 
   @override
-  String get id => (origin as RecipeEntryProvider).id;
+  String get id => (origin as WeekplanRecipesListProvider).id;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

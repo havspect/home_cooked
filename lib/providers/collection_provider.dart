@@ -1,4 +1,3 @@
-// Necessary for code-generation to work
 import 'package:home_cooked/main.dart';
 import 'package:home_cooked/models/collection.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -7,29 +6,38 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'collection_provider.g.dart';
 
 @riverpod
-class CollectionList extends _$CollectionList {
-  // TODO: @request.auth.id ?= users.id
-
-  Future<List<Collection>> _getAllCollections() async {
+class CollectionEntry extends _$CollectionEntry {
+  Future<Collection> _getCollection(String id) async {
     final PocketBase pb = getIt<PocketBase>();
 
     try {
-      final res = await pb
-          .collection('collections')
-          .getList(expand: 'recipes,owner,users');
+      final res = await pb.collection('collections').getOne(id);
 
-      final collections =
-          res.items.map((e) => Collection.fromJson(e.toJson())).toList();
+      final collection = Collection.fromJson(res.toJson());
 
-      return collections;
+      return collection;
     } catch (e) {
-      // ignore: avoid_print
       rethrow;
     }
   }
 
   @override
-  Future<List<Collection>> build() async {
-    return await _getAllCollections();
+  Future<Collection> build(String id) async {
+    return await _getCollection(id);
+  }
+
+  Future<void> updateCollection(Collection collection) async {
+    final PocketBase pb = getIt<PocketBase>();
+
+    try {
+      await pb
+          .collection('collections')
+          .update(collection.id, body: collection.toJson());
+
+      ref.invalidateSelf();
+      await future;
+    } catch (e) {
+      rethrow;
+    }
   }
 }

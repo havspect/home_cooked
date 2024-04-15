@@ -24,6 +24,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
           context.go('/recipes');
           break;
         case 2:
+          context.goNamed('weekplan');
+          break;
+        case 3:
           context.go('/weekplan');
           break;
         default:
@@ -35,19 +38,55 @@ class _BottomNavigationState extends State<BottomNavigation> {
       });
     }
 
+    final currentLocation =
+        GoRouter.of(context).routeInformationProvider.value.uri;
+
+    Widget? fab;
+
+    if (currentLocation.toString() != '/recipes/add') {
+      fab = FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => context.pushNamed('recipe-add'),
+      );
+    }
+
+    Widget? icon;
+
+    if (currentLocation.toString() == '/recipes/add') {
+      icon = IconButton(
+        icon: Icon(Icons.arrow_back_outlined),
+        onPressed: () => context.pop(),
+      );
+    }
+
     return Scaffold(
-      body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: changeTab,
-        currentIndex: currentIndex,
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.collections), label: 'Collections'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Recipes'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_month), label: 'Weekplan'),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          leading: icon,
+          title: Text(
+            'Home Cooked',
+            style: TextStyle(
+                color: Theme.of(context).colorScheme.onPrimaryContainer),
+          ),
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        ),
+        body: widget.child,
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          onTap: changeTab,
+          currentIndex: currentIndex,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Recipes'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.collections), label: 'Collections'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_month), label: 'Weekplan'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Settings'),
+          ],
+        ),
+        floatingActionButton: fab);
   }
 }

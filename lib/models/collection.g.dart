@@ -8,6 +8,7 @@ part of 'collection.dart';
 
 _$CollectionImpl _$$CollectionImplFromJson(Map<String, dynamic> json) =>
     _$CollectionImpl(
+      id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String?,
       expand: json['expand'] == null
@@ -17,6 +18,7 @@ _$CollectionImpl _$$CollectionImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CollectionImplToJson(_$CollectionImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'expand': instance.expand?.toJson(),
@@ -40,4 +42,18 @@ Map<String, dynamic> _$$CollectionExpandedImplToJson(
       'owner': instance.owner.toJson(),
       'users': instance.users?.map((e) => e.toJson()).toList(),
       'recipes': instance.recipes?.map((e) => e.toJson()).toList(),
+    };
+
+_$NewCollectionImpl _$$NewCollectionImplFromJson(Map<String, dynamic> json) =>
+    _$NewCollectionImpl(
+      title: json['title'] as String,
+      description: json['description'] as String?,
+      owner: json['owner'] as String,
+    );
+
+Map<String, dynamic> _$$NewCollectionImplToJson(_$NewCollectionImpl instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'description': instance.description,
+      'owner': instance.owner,
     };

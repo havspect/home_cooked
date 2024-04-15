@@ -87,7 +87,7 @@ class _SignInPageState extends State<SignInPage> {
                       try {
                         await pb.collection('users').authWithPassword(
                             email.value.text, password.value.text);
-                        context.go('/recipes');
+                        context.pushNamed('collections');
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Failed to log in.')),

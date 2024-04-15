@@ -9,6 +9,7 @@ part 'collection.g.dart';
 class Collection with _$Collection {
   @JsonSerializable(explicitToJson: true)
   factory Collection({
+    required String id,
     required String title,
     String? description,
     CollectionExpanded? expand,
@@ -29,4 +30,15 @@ class CollectionExpanded with _$CollectionExpanded {
 
   factory CollectionExpanded.fromJson(Map<String, dynamic> json) =>
       _$CollectionExpandedFromJson(json);
+}
+
+@freezed
+class NewCollection with _$NewCollection {
+  factory NewCollection(
+      {required String title,
+      String? description,
+      required String owner}) = _NewCollection;
+
+  factory NewCollection.fromJson(Map<String, dynamic> json) =>
+      _$NewCollectionFromJson(json);
 }

@@ -34,7 +34,7 @@ func main() {
 
 	// fires only for "users" and "articles" collections
 	app.OnRecordAfterCreateRequest("users").Add(func(e *core.RecordCreateEvent) error {
-		resp, err := http.Get("https://api.dicebear.com/8.x/personas/svg")
+		resp, err := http.Get("https://api.dicebear.com/8.x/personas/svg?seed=" + e.Record.Id)
 		if err != nil {
 			return err
 		}

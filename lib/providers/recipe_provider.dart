@@ -1,4 +1,3 @@
-// Necessary for code-generation to work
 import 'package:home_cooked/main.dart';
 import 'package:home_cooked/models/recipe.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -7,17 +6,16 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'recipe_provider.g.dart';
 
 @riverpod
-class RecipeList extends _$RecipeList {
-  Future<List<Recipe>> _getAllRecipes() async {
+class RecipeEntry extends _$RecipeEntry {
+  Future<Recipe> _getRecipe(String id) async {
     final PocketBase pb = getIt<PocketBase>();
 
     try {
-      final res = await pb.collection('recipes').getList();
+      final res = await pb.collection('recipes').getOne(id);
 
-      final recipes =
-          res.items.map((e) => Recipe.fromJson(e.toJson())).toList();
+      final recipe = Recipe.fromJson(res.toJson());
 
-      return recipes;
+      return recipe;
     } catch (e) {
       // ignore: avoid_print
       rethrow;
@@ -25,15 +23,15 @@ class RecipeList extends _$RecipeList {
   }
 
   @override
-  Future<List<Recipe>> build() async {
-    return await _getAllRecipes();
+  Future<Recipe> build(String id) async {
+    return await _getRecipe(id);
   }
 
-  Future<void> addRecipe(NewRecipe recipe) async {
+  Future<void> updateRecipe(Recipe recipe) async {
     final PocketBase pb = getIt<PocketBase>();
 
     try {
-      await pb.collection('recipes').create(body: recipe.toJson());
+      await pb.collection('recipes').update(recipe.id, body: recipe.toJson());
 
       ref.invalidateSelf();
       await future;
