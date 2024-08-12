@@ -11,7 +11,9 @@ class CollectionEntry extends _$CollectionEntry {
     final PocketBase pb = getIt<PocketBase>();
 
     try {
-      final res = await pb.collection('collections').getOne(id);
+      final res = await pb
+          .collection('collections')
+          .getOne(id, expand: 'owner,recipes,shared_users');
 
       final collection = Collection.fromJson(res.toJson());
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_cooked/main.dart';
 import 'package:home_cooked/models/user.dart';
@@ -34,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
             child: Form(
       key: _formKey,
       child: Container(
-        constraints: new BoxConstraints(maxWidth: 400),
+        constraints: const BoxConstraints(maxWidth: 400),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -123,7 +122,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       );
 
                       final pb = getIt<PocketBase>();
-                      RecordModel? user = null;
+                      RecordModel? user;
 
                       NewUser newUser = NewUser(
                           // username: email.value.text,

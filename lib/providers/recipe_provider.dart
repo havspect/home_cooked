@@ -17,7 +17,6 @@ class RecipeEntry extends _$RecipeEntry {
 
       return recipe;
     } catch (e) {
-      // ignore: avoid_print
       rethrow;
     }
   }

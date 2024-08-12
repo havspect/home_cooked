@@ -12,3 +12,7 @@
 3. Search
 4. Intutitive login page
 5. Settings for users 
+
+## Development
+
+- `dart run build_runner watch`

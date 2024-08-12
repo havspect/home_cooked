@@ -12,15 +12,12 @@ class RecipeListPage extends ConsumerWidget {
 
     return Container(
       child: switch (recipes) {
-        AsyncData(:final value) => ListView.builder(
-            padding: const EdgeInsets.all(8),
-            itemCount: value.length,
-            itemBuilder: (BuildContext context, int index) {
-              return SizedBox(
-                height: 50,
-                child: Center(child: Text('Entry ${value[index]}')),
-              );
-            },
+        AsyncData(:final value) => CarouselView(
+            scrollDirection: Axis.vertical,
+            itemExtent: double.infinity,
+            children: List<Widget>.generate(10, (int index) {
+              return Center(child: Text('Item $index'));
+            }),
           ),
         AsyncError() => const Text('ooops'),
         _ => const Center(

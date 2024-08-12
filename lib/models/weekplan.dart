@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:home_cooked/models/user.dart';
+import 'package:home_cooked/models/weekplan_recipes.dart';
 
 part 'weekplan.freezed.dart';
 part 'weekplan.g.dart';
@@ -10,6 +11,7 @@ class Weekplan with _$Weekplan {
   factory Weekplan({
     required String id,
     required String title,
+    required String owner,
     WeekplanExpanded? expand,
   }) = _Weekplan;
 
@@ -21,8 +23,9 @@ class Weekplan with _$Weekplan {
 class WeekplanExpanded with _$WeekplanExpanded {
   @JsonSerializable(explicitToJson: true)
   factory WeekplanExpanded({
-    User? owner,
-    List<User>? users,
+    required User owner,
+    @JsonKey(name: "weekplan_recipes") List<WeekplanRecipes>? weekplanRecipes,
+    @JsonKey(name: "shared_users") List<User>? sharedUsers,
   }) = _WeekplanExpanded;
 
   factory WeekplanExpanded.fromJson(Map<String, dynamic> json) =>

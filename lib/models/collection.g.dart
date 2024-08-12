@@ -9,8 +9,11 @@ part of 'collection.dart';
 _$CollectionImpl _$$CollectionImplFromJson(Map<String, dynamic> json) =>
     _$CollectionImpl(
       id: json['id'] as String,
-      title: json['title'] as String,
-      description: json['description'] as String?,
+      name: json['name'] as String,
+      owner: json['owner'] as String,
+      sharedUsers: (json['shared_users'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
       expand: json['expand'] == null
           ? null
           : CollectionExpanded.fromJson(json['expand'] as Map<String, dynamic>),
@@ -19,8 +22,9 @@ _$CollectionImpl _$$CollectionImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$CollectionImplToJson(_$CollectionImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
+      'name': instance.name,
+      'owner': instance.owner,
+      'shared_users': instance.sharedUsers,
       'expand': instance.expand?.toJson(),
     };
 
@@ -28,11 +32,11 @@ _$CollectionExpandedImpl _$$CollectionExpandedImplFromJson(
         Map<String, dynamic> json) =>
     _$CollectionExpandedImpl(
       owner: User.fromJson(json['owner'] as Map<String, dynamic>),
-      users: (json['users'] as List<dynamic>?)
-          ?.map((e) => User.fromJson(e as Map<String, dynamic>))
+      recipes: (json['recipes'] as List<dynamic>)
+          .map((e) => Recipe.fromJson(e as Map<String, dynamic>))
           .toList(),
-      recipes: (json['recipes'] as List<dynamic>?)
-          ?.map((e) => Recipe.fromJson(e as Map<String, dynamic>))
+      sharedUsers: (json['shared_users'] as List<dynamic>)
+          .map((e) => User.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -40,8 +44,8 @@ Map<String, dynamic> _$$CollectionExpandedImplToJson(
         _$CollectionExpandedImpl instance) =>
     <String, dynamic>{
       'owner': instance.owner.toJson(),
-      'users': instance.users?.map((e) => e.toJson()).toList(),
-      'recipes': instance.recipes?.map((e) => e.toJson()).toList(),
+      'recipes': instance.recipes.map((e) => e.toJson()).toList(),
+      'shared_users': instance.sharedUsers.map((e) => e.toJson()).toList(),
     };
 
 _$NewCollectionImpl _$$NewCollectionImplFromJson(Map<String, dynamic> json) =>

@@ -1,17 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:typed_data';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_cooked/models/recipe.dart';
 import 'package:home_cooked/providers/recipe_list_provider.dart';
 import 'package:http/http.dart';
-import 'package:cross_file/cross_file.dart';
 import 'package:cross_file_image/cross_file_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:image_picker/image_picker.dart';
@@ -26,11 +21,11 @@ class RecipeAddPage extends ConsumerStatefulWidget {
 }
 
 class _RecipeAddState extends ConsumerState<RecipeAddPage> {
-  final _formKey = GlobalKey<FormState>();
   XFile? _imageFile;
   bool _isExternal = false;
   String? _externalImage;
 
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
   final TextEditingController _sourceController = TextEditingController();
@@ -107,6 +102,41 @@ class _RecipeAddState extends ConsumerState<RecipeAddPage> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    if (_imageFile == null || _externalImage == null)
+                      InkWell(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Theme.of(context).colorScheme.primary),
+                          margin: const EdgeInsets.only(bottom: 8),
+                          constraints: const BoxConstraints(
+                              minHeight: 200, minWidth: double.infinity),
+                          child: Padding(
+                            padding: const EdgeInsets.all(24.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.add,
+                                  color:
+                                      Theme.of(context).colorScheme.onSecondary,
+                                ),
+                                Text(
+                                  "Please select an image for the recipe.",
+                                  style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondary,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        onTap: () async {
+                          await selectImage();
+                        },
+                      ),
                     TextFormField(
                       controller: _titleController,
                       decoration: const InputDecoration(
@@ -166,19 +196,6 @@ class _RecipeAddState extends ConsumerState<RecipeAddPage> {
                         },
                       ),
                     const SizedBox(height: 10),
-                    Text('Es muss ein Bild mit dem Rezept hochgeladen werden.'),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        const Spacer(),
-                        ElevatedButton(
-                          child: const Text('Pick an image'),
-                          onPressed: () async {
-                            await selectImage();
-                          },
-                        ),
-                      ],
-                    ),
                   ],
                 ),
               ),

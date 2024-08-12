@@ -1,13 +1,18 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:home_cooked/pages/home_page.dart';
+import 'package:home_cooked/pages/recipes/recipe_page.dart';
 import 'package:home_cooked/router.dart';
+
 import 'package:home_cooked/theme/color_schemes.dart';
+import 'package:navbar_router/navbar_router.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 final getIt = GetIt.instance;
 

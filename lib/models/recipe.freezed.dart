@@ -22,13 +22,18 @@ Recipe _$RecipeFromJson(Map<String, dynamic> json) {
 mixin _$Recipe {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String? get text => throw _privateConstructorUsedError;
+  String? get note => throw _privateConstructorUsedError;
   String? get source => throw _privateConstructorUsedError;
   String? get link => throw _privateConstructorUsedError;
-  String? get image => throw _privateConstructorUsedError;
+  @JsonKey(name: 'image_url')
+  String? get ImageUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this Recipe to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Recipe
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RecipeCopyWith<Recipe> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -40,10 +45,10 @@ abstract class $RecipeCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      String? text,
+      String? note,
       String? source,
       String? link,
-      String? image});
+      @JsonKey(name: 'image_url') String? ImageUrl});
 }
 
 /// @nodoc
@@ -56,15 +61,17 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Recipe
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? text = freezed,
+    Object? note = freezed,
     Object? source = freezed,
     Object? link = freezed,
-    Object? image = freezed,
+    Object? ImageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -75,9 +82,9 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      text: freezed == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
               as String?,
       source: freezed == source
           ? _value.source
@@ -87,9 +94,9 @@ class _$RecipeCopyWithImpl<$Res, $Val extends Recipe>
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
+      ImageUrl: freezed == ImageUrl
+          ? _value.ImageUrl
+          : ImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -105,10 +112,10 @@ abstract class _$$RecipeImplCopyWith<$Res> implements $RecipeCopyWith<$Res> {
   $Res call(
       {String id,
       String title,
-      String? text,
+      String? note,
       String? source,
       String? link,
-      String? image});
+      @JsonKey(name: 'image_url') String? ImageUrl});
 }
 
 /// @nodoc
@@ -119,15 +126,17 @@ class __$$RecipeImplCopyWithImpl<$Res>
       _$RecipeImpl _value, $Res Function(_$RecipeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Recipe
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? title = null,
-    Object? text = freezed,
+    Object? note = freezed,
     Object? source = freezed,
     Object? link = freezed,
-    Object? image = freezed,
+    Object? ImageUrl = freezed,
   }) {
     return _then(_$RecipeImpl(
       id: null == id
@@ -138,9 +147,9 @@ class __$$RecipeImplCopyWithImpl<$Res>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      text: freezed == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
               as String?,
       source: freezed == source
           ? _value.source
@@ -150,9 +159,9 @@ class __$$RecipeImplCopyWithImpl<$Res>
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as String?,
-      image: freezed == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
+      ImageUrl: freezed == ImageUrl
+          ? _value.ImageUrl
+          : ImageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -164,10 +173,10 @@ class _$RecipeImpl implements _Recipe {
   _$RecipeImpl(
       {required this.id,
       required this.title,
-      this.text,
+      this.note,
       this.source,
       this.link,
-      this.image});
+      @JsonKey(name: 'image_url') this.ImageUrl});
 
   factory _$RecipeImpl.fromJson(Map<String, dynamic> json) =>
       _$$RecipeImplFromJson(json);
@@ -177,17 +186,18 @@ class _$RecipeImpl implements _Recipe {
   @override
   final String title;
   @override
-  final String? text;
+  final String? note;
   @override
   final String? source;
   @override
   final String? link;
   @override
-  final String? image;
+  @JsonKey(name: 'image_url')
+  final String? ImageUrl;
 
   @override
   String toString() {
-    return 'Recipe(id: $id, title: $title, text: $text, source: $source, link: $link, image: $image)';
+    return 'Recipe(id: $id, title: $title, note: $note, source: $source, link: $link, ImageUrl: $ImageUrl)';
   }
 
   @override
@@ -197,18 +207,21 @@ class _$RecipeImpl implements _Recipe {
             other is _$RecipeImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.text, text) || other.text == text) &&
+            (identical(other.note, note) || other.note == note) &&
             (identical(other.source, source) || other.source == source) &&
             (identical(other.link, link) || other.link == link) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.ImageUrl, ImageUrl) ||
+                other.ImageUrl == ImageUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, title, text, source, link, image);
+      Object.hash(runtimeType, id, title, note, source, link, ImageUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Recipe
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RecipeImplCopyWith<_$RecipeImpl> get copyWith =>
@@ -226,10 +239,10 @@ abstract class _Recipe implements Recipe {
   factory _Recipe(
       {required final String id,
       required final String title,
-      final String? text,
+      final String? note,
       final String? source,
       final String? link,
-      final String? image}) = _$RecipeImpl;
+      @JsonKey(name: 'image_url') final String? ImageUrl}) = _$RecipeImpl;
 
   factory _Recipe.fromJson(Map<String, dynamic> json) = _$RecipeImpl.fromJson;
 
@@ -238,15 +251,19 @@ abstract class _Recipe implements Recipe {
   @override
   String get title;
   @override
-  String? get text;
+  String? get note;
   @override
   String? get source;
   @override
   String? get link;
   @override
-  String? get image;
+  @JsonKey(name: 'image_url')
+  String? get ImageUrl;
+
+  /// Create a copy of Recipe
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RecipeImplCopyWith<_$RecipeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -262,8 +279,12 @@ mixin _$NewRecipe {
   String? get text => throw _privateConstructorUsedError;
   String? get source => throw _privateConstructorUsedError;
 
+  /// Serializes this NewRecipe to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewRecipe
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewRecipeCopyWith<NewRecipe> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -286,6 +307,8 @@ class _$NewRecipeCopyWithImpl<$Res, $Val extends NewRecipe>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewRecipe
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -334,6 +357,8 @@ class __$$NewRecipeImplCopyWithImpl<$Res>
       _$NewRecipeImpl _value, $Res Function(_$NewRecipeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewRecipe
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -396,11 +421,13 @@ class _$NewRecipeImpl implements _NewRecipe {
             (identical(other.source, source) || other.source == source));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, link, text, source);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewRecipe
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewRecipeImplCopyWith<_$NewRecipeImpl> get copyWith =>
@@ -432,8 +459,11 @@ abstract class _NewRecipe implements NewRecipe {
   String? get text;
   @override
   String? get source;
+
+  /// Create a copy of NewRecipe
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewRecipeImplCopyWith<_$NewRecipeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

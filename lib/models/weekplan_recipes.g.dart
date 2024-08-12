@@ -10,6 +10,8 @@ _$WeekplanRecipesImpl _$$WeekplanRecipesImplFromJson(
         Map<String, dynamic> json) =>
     _$WeekplanRecipesImpl(
       id: json['id'] as String,
+      weekplanId: json['weekplan_id'] as String,
+      recipeId: json['recipe_id'] as String,
       date: DateTime.parse(json['date'] as String),
       expand: WeekplanRecipesExpanded.fromJson(
           json['expand'] as Map<String, dynamic>),
@@ -19,6 +21,8 @@ Map<String, dynamic> _$$WeekplanRecipesImplToJson(
         _$WeekplanRecipesImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'weekplan_id': instance.weekplanId,
+      'recipe_id': instance.recipeId,
       'date': instance.date.toIso8601String(),
       'expand': instance.expand.toJson(),
     };

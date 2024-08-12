@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:home_cooked/main.dart';
 import 'package:home_cooked/models/collection.dart';
 import 'package:home_cooked/providers/collection_list_provider.dart';
 import 'package:pocketbase/pocketbase.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CollectionListPage extends ConsumerWidget {
   const CollectionListPage({super.key});
@@ -17,8 +15,6 @@ class CollectionListPage extends ConsumerWidget {
         ref.watch(collectionListProvider);
 
     final pb = getIt<PocketBase>();
-
-    print(pb.authStore.model);
 
     final uri = pb
         .getFileUrl(pb.authStore.model, pb.authStore.model.data['avatar'])

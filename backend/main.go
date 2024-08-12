@@ -9,6 +9,7 @@ import (
 	"github.com/pocketbase/pocketbase"
 	"github.com/pocketbase/pocketbase/core"
 	"github.com/pocketbase/pocketbase/forms"
+	"github.com/pocketbase/pocketbase/models"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 	"github.com/pocketbase/pocketbase/tools/filesystem"
 )
@@ -34,6 +35,39 @@ func main() {
 
 	// fires only for "users" and "articles" collections
 	app.OnRecordAfterCreateRequest("users").Add(func(e *core.RecordCreateEvent) error {
+		//Create Default Collection
+		collection, err := app.Dao().FindCollectionByNameOrId("collections")
+		if err != nil {
+			return err
+		}
+
+		collections_record := models.NewRecord(collection)
+
+		// set individual fields
+		// or bulk load with record.Load(map[string]any{...})
+		collections_record.Set("name", "default")
+		collections_record.Set("owner_id", e.Record.Id)
+
+		if err := app.Dao().SaveRecord(collections_record); err != nil {
+			return err
+		}
+		//Create Default Weekplan
+		weekplan, err := app.Dao().FindCollectionByNameOrId("weekplans")
+		if err != nil {
+			return err
+		}
+
+		weekplan_record := models.NewRecord(weekplan)
+
+		// set individual fields
+		// or bulk load with record.Load(map[string]any{...})
+		weekplan_record.Set("title", "default")
+		weekplan_record.Set("owner_id", e.Record.Id)
+
+		if err := app.Dao().SaveRecord(weekplan_record); err != nil {
+			return err
+		}
+
 		resp, err := http.Get("https://api.dicebear.com/8.x/personas/svg?seed=" + e.Record.Id)
 		if err != nil {
 			return err

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:home_cooked/pages/home_page.dart';
+import 'package:navbar_router/navbar_router.dart';
 
 class BottomNavigation extends StatefulWidget {
   final Widget child;
@@ -38,6 +40,18 @@ class _BottomNavigationState extends State<BottomNavigation> {
       });
     }
 
+    void switchAddAction(BuildContext context) {
+      switch (currentIndex) {
+        case 0:
+          context.pushNamed('collection-add');
+          break;
+        case 1:
+          context.pushNamed('recipe-add');
+          break;
+        default:
+      }
+    }
+
     final currentLocation =
         GoRouter.of(context).routeInformationProvider.value.uri;
 
@@ -45,16 +59,15 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
     if (currentLocation.toString() != '/recipes/add') {
       fab = FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => context.pushNamed('recipe-add'),
-      );
+          child: const Icon(Icons.add),
+          onPressed: () => switchAddAction(context));
     }
 
     Widget? icon;
 
     if (currentLocation.toString() == '/recipes/add') {
       icon = IconButton(
-        icon: Icon(Icons.arrow_back_outlined),
+        icon: const Icon(Icons.arrow_back_outlined),
         onPressed: () => context.pop(),
       );
     }
@@ -74,8 +87,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
           type: BottomNavigationBarType.fixed,
           onTap: changeTab,
           currentIndex: currentIndex,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Recipes'),

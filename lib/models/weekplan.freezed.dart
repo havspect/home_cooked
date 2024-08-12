@@ -22,10 +22,15 @@ Weekplan _$WeekplanFromJson(Map<String, dynamic> json) {
 mixin _$Weekplan {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  String get owner => throw _privateConstructorUsedError;
   WeekplanExpanded? get expand => throw _privateConstructorUsedError;
 
+  /// Serializes this Weekplan to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Weekplan
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WeekplanCopyWith<Weekplan> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -35,7 +40,7 @@ abstract class $WeekplanCopyWith<$Res> {
   factory $WeekplanCopyWith(Weekplan value, $Res Function(Weekplan) then) =
       _$WeekplanCopyWithImpl<$Res, Weekplan>;
   @useResult
-  $Res call({String id, String title, WeekplanExpanded? expand});
+  $Res call({String id, String title, String owner, WeekplanExpanded? expand});
 
   $WeekplanExpandedCopyWith<$Res>? get expand;
 }
@@ -50,11 +55,14 @@ class _$WeekplanCopyWithImpl<$Res, $Val extends Weekplan>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Weekplan
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? owner = null,
     Object? expand = freezed,
   }) {
     return _then(_value.copyWith(
@@ -66,6 +74,10 @@ class _$WeekplanCopyWithImpl<$Res, $Val extends Weekplan>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
       expand: freezed == expand
           ? _value.expand
           : expand // ignore: cast_nullable_to_non_nullable
@@ -73,6 +85,8 @@ class _$WeekplanCopyWithImpl<$Res, $Val extends Weekplan>
     ) as $Val);
   }
 
+  /// Create a copy of Weekplan
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $WeekplanExpandedCopyWith<$Res>? get expand {
@@ -94,7 +108,7 @@ abstract class _$$WeekplanImplCopyWith<$Res>
       __$$WeekplanImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String title, WeekplanExpanded? expand});
+  $Res call({String id, String title, String owner, WeekplanExpanded? expand});
 
   @override
   $WeekplanExpandedCopyWith<$Res>? get expand;
@@ -108,11 +122,14 @@ class __$$WeekplanImplCopyWithImpl<$Res>
       _$WeekplanImpl _value, $Res Function(_$WeekplanImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Weekplan
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
     Object? title = null,
+    Object? owner = null,
     Object? expand = freezed,
   }) {
     return _then(_$WeekplanImpl(
@@ -123,6 +140,10 @@ class __$$WeekplanImplCopyWithImpl<$Res>
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
               as String,
       expand: freezed == expand
           ? _value.expand
@@ -136,7 +157,11 @@ class __$$WeekplanImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$WeekplanImpl implements _Weekplan {
-  _$WeekplanImpl({required this.id, required this.title, this.expand});
+  _$WeekplanImpl(
+      {required this.id,
+      required this.title,
+      required this.owner,
+      this.expand});
 
   factory _$WeekplanImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeekplanImplFromJson(json);
@@ -146,11 +171,13 @@ class _$WeekplanImpl implements _Weekplan {
   @override
   final String title;
   @override
+  final String owner;
+  @override
   final WeekplanExpanded? expand;
 
   @override
   String toString() {
-    return 'Weekplan(id: $id, title: $title, expand: $expand)';
+    return 'Weekplan(id: $id, title: $title, owner: $owner, expand: $expand)';
   }
 
   @override
@@ -160,14 +187,17 @@ class _$WeekplanImpl implements _Weekplan {
             other is _$WeekplanImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
             (identical(other.expand, expand) || other.expand == expand));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, expand);
+  int get hashCode => Object.hash(runtimeType, id, title, owner, expand);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Weekplan
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WeekplanImplCopyWith<_$WeekplanImpl> get copyWith =>
@@ -185,6 +215,7 @@ abstract class _Weekplan implements Weekplan {
   factory _Weekplan(
       {required final String id,
       required final String title,
+      required final String owner,
       final WeekplanExpanded? expand}) = _$WeekplanImpl;
 
   factory _Weekplan.fromJson(Map<String, dynamic> json) =
@@ -195,9 +226,14 @@ abstract class _Weekplan implements Weekplan {
   @override
   String get title;
   @override
-  WeekplanExpanded? get expand;
+  String get owner;
   @override
-  @JsonKey(ignore: true)
+  WeekplanExpanded? get expand;
+
+  /// Create a copy of Weekplan
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WeekplanImplCopyWith<_$WeekplanImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -208,11 +244,19 @@ WeekplanExpanded _$WeekplanExpandedFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$WeekplanExpanded {
-  User? get owner => throw _privateConstructorUsedError;
-  List<User>? get users => throw _privateConstructorUsedError;
+  User get owner => throw _privateConstructorUsedError;
+  @JsonKey(name: "weekplan_recipes")
+  List<WeekplanRecipes>? get weekplanRecipes =>
+      throw _privateConstructorUsedError;
+  @JsonKey(name: "shared_users")
+  List<User>? get sharedUsers => throw _privateConstructorUsedError;
 
+  /// Serializes this WeekplanExpanded to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of WeekplanExpanded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $WeekplanExpandedCopyWith<WeekplanExpanded> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -223,9 +267,12 @@ abstract class $WeekplanExpandedCopyWith<$Res> {
           WeekplanExpanded value, $Res Function(WeekplanExpanded) then) =
       _$WeekplanExpandedCopyWithImpl<$Res, WeekplanExpanded>;
   @useResult
-  $Res call({User? owner, List<User>? users});
+  $Res call(
+      {User owner,
+      @JsonKey(name: "weekplan_recipes") List<WeekplanRecipes>? weekplanRecipes,
+      @JsonKey(name: "shared_users") List<User>? sharedUsers});
 
-  $UserCopyWith<$Res>? get owner;
+  $UserCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -238,32 +285,37 @@ class _$WeekplanExpandedCopyWithImpl<$Res, $Val extends WeekplanExpanded>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of WeekplanExpanded
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? owner = freezed,
-    Object? users = freezed,
+    Object? owner = null,
+    Object? weekplanRecipes = freezed,
+    Object? sharedUsers = freezed,
   }) {
     return _then(_value.copyWith(
-      owner: freezed == owner
+      owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as User?,
-      users: freezed == users
-          ? _value.users
-          : users // ignore: cast_nullable_to_non_nullable
+              as User,
+      weekplanRecipes: freezed == weekplanRecipes
+          ? _value.weekplanRecipes
+          : weekplanRecipes // ignore: cast_nullable_to_non_nullable
+              as List<WeekplanRecipes>?,
+      sharedUsers: freezed == sharedUsers
+          ? _value.sharedUsers
+          : sharedUsers // ignore: cast_nullable_to_non_nullable
               as List<User>?,
     ) as $Val);
   }
 
+  /// Create a copy of WeekplanExpanded
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res>? get owner {
-    if (_value.owner == null) {
-      return null;
-    }
-
-    return $UserCopyWith<$Res>(_value.owner!, (value) {
+  $UserCopyWith<$Res> get owner {
+    return $UserCopyWith<$Res>(_value.owner, (value) {
       return _then(_value.copyWith(owner: value) as $Val);
     });
   }
@@ -277,10 +329,13 @@ abstract class _$$WeekplanExpandedImplCopyWith<$Res>
       __$$WeekplanExpandedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User? owner, List<User>? users});
+  $Res call(
+      {User owner,
+      @JsonKey(name: "weekplan_recipes") List<WeekplanRecipes>? weekplanRecipes,
+      @JsonKey(name: "shared_users") List<User>? sharedUsers});
 
   @override
-  $UserCopyWith<$Res>? get owner;
+  $UserCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -291,20 +346,27 @@ class __$$WeekplanExpandedImplCopyWithImpl<$Res>
       $Res Function(_$WeekplanExpandedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of WeekplanExpanded
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? owner = freezed,
-    Object? users = freezed,
+    Object? owner = null,
+    Object? weekplanRecipes = freezed,
+    Object? sharedUsers = freezed,
   }) {
     return _then(_$WeekplanExpandedImpl(
-      owner: freezed == owner
+      owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
-              as User?,
-      users: freezed == users
-          ? _value._users
-          : users // ignore: cast_nullable_to_non_nullable
+              as User,
+      weekplanRecipes: freezed == weekplanRecipes
+          ? _value._weekplanRecipes
+          : weekplanRecipes // ignore: cast_nullable_to_non_nullable
+              as List<WeekplanRecipes>?,
+      sharedUsers: freezed == sharedUsers
+          ? _value._sharedUsers
+          : sharedUsers // ignore: cast_nullable_to_non_nullable
               as List<User>?,
     ));
   }
@@ -314,27 +376,44 @@ class __$$WeekplanExpandedImplCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$WeekplanExpandedImpl implements _WeekplanExpanded {
-  _$WeekplanExpandedImpl({this.owner, final List<User>? users})
-      : _users = users;
+  _$WeekplanExpandedImpl(
+      {required this.owner,
+      @JsonKey(name: "weekplan_recipes")
+      final List<WeekplanRecipes>? weekplanRecipes,
+      @JsonKey(name: "shared_users") final List<User>? sharedUsers})
+      : _weekplanRecipes = weekplanRecipes,
+        _sharedUsers = sharedUsers;
 
   factory _$WeekplanExpandedImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeekplanExpandedImplFromJson(json);
 
   @override
-  final User? owner;
-  final List<User>? _users;
+  final User owner;
+  final List<WeekplanRecipes>? _weekplanRecipes;
   @override
-  List<User>? get users {
-    final value = _users;
+  @JsonKey(name: "weekplan_recipes")
+  List<WeekplanRecipes>? get weekplanRecipes {
+    final value = _weekplanRecipes;
     if (value == null) return null;
-    if (_users is EqualUnmodifiableListView) return _users;
+    if (_weekplanRecipes is EqualUnmodifiableListView) return _weekplanRecipes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<User>? _sharedUsers;
+  @override
+  @JsonKey(name: "shared_users")
+  List<User>? get sharedUsers {
+    final value = _sharedUsers;
+    if (value == null) return null;
+    if (_sharedUsers is EqualUnmodifiableListView) return _sharedUsers;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'WeekplanExpanded(owner: $owner, users: $users)';
+    return 'WeekplanExpanded(owner: $owner, weekplanRecipes: $weekplanRecipes, sharedUsers: $sharedUsers)';
   }
 
   @override
@@ -343,15 +422,23 @@ class _$WeekplanExpandedImpl implements _WeekplanExpanded {
         (other.runtimeType == runtimeType &&
             other is _$WeekplanExpandedImpl &&
             (identical(other.owner, owner) || other.owner == owner) &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality()
+                .equals(other._weekplanRecipes, _weekplanRecipes) &&
+            const DeepCollectionEquality()
+                .equals(other._sharedUsers, _sharedUsers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, owner, const DeepCollectionEquality().hash(_users));
+      runtimeType,
+      owner,
+      const DeepCollectionEquality().hash(_weekplanRecipes),
+      const DeepCollectionEquality().hash(_sharedUsers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of WeekplanExpanded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$WeekplanExpandedImplCopyWith<_$WeekplanExpandedImpl> get copyWith =>
@@ -367,18 +454,29 @@ class _$WeekplanExpandedImpl implements _WeekplanExpanded {
 }
 
 abstract class _WeekplanExpanded implements WeekplanExpanded {
-  factory _WeekplanExpanded({final User? owner, final List<User>? users}) =
+  factory _WeekplanExpanded(
+          {required final User owner,
+          @JsonKey(name: "weekplan_recipes")
+          final List<WeekplanRecipes>? weekplanRecipes,
+          @JsonKey(name: "shared_users") final List<User>? sharedUsers}) =
       _$WeekplanExpandedImpl;
 
   factory _WeekplanExpanded.fromJson(Map<String, dynamic> json) =
       _$WeekplanExpandedImpl.fromJson;
 
   @override
-  User? get owner;
+  User get owner;
   @override
-  List<User>? get users;
+  @JsonKey(name: "weekplan_recipes")
+  List<WeekplanRecipes>? get weekplanRecipes;
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(name: "shared_users")
+  List<User>? get sharedUsers;
+
+  /// Create a copy of WeekplanExpanded
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$WeekplanExpandedImplCopyWith<_$WeekplanExpandedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -393,8 +491,12 @@ mixin _$NewWeekplan {
   String? get description => throw _privateConstructorUsedError;
   String get owner => throw _privateConstructorUsedError;
 
+  /// Serializes this NewWeekplan to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewWeekplan
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewWeekplanCopyWith<NewWeekplan> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -418,6 +520,8 @@ class _$NewWeekplanCopyWithImpl<$Res, $Val extends NewWeekplan>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewWeekplan
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -461,6 +565,8 @@ class __$$NewWeekplanImplCopyWithImpl<$Res>
       _$NewWeekplanImpl _value, $Res Function(_$NewWeekplanImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewWeekplan
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -517,11 +623,13 @@ class _$NewWeekplanImpl implements _NewWeekplan {
             (identical(other.owner, owner) || other.owner == owner));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, description, owner);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewWeekplan
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewWeekplanImplCopyWith<_$NewWeekplanImpl> get copyWith =>
@@ -550,8 +658,11 @@ abstract class _NewWeekplan implements NewWeekplan {
   String? get description;
   @override
   String get owner;
+
+  /// Create a copy of NewWeekplan
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewWeekplanImplCopyWith<_$NewWeekplanImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

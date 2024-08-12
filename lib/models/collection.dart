@@ -10,8 +10,9 @@ class Collection with _$Collection {
   @JsonSerializable(explicitToJson: true)
   factory Collection({
     required String id,
-    required String title,
-    String? description,
+    required String name,
+    required String owner,
+    @JsonKey(name: 'shared_users') required List<String> sharedUsers,
     CollectionExpanded? expand,
   }) = _Collection;
 
@@ -24,8 +25,8 @@ class CollectionExpanded with _$CollectionExpanded {
   @JsonSerializable(explicitToJson: true)
   factory CollectionExpanded({
     required User owner,
-    List<User>? users,
-    List<Recipe>? recipes,
+    required List<Recipe> recipes,
+    @JsonKey(name: 'shared_users') required List<User> sharedUsers,
   }) = _CollectionExpanded;
 
   factory CollectionExpanded.fromJson(Map<String, dynamic> json) =>

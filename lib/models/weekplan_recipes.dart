@@ -10,6 +10,8 @@ class WeekplanRecipes with _$WeekplanRecipes {
   @JsonSerializable(explicitToJson: true)
   factory WeekplanRecipes({
     required String id,
+    @JsonKey(name: 'weekplan_id') required String weekplanId,
+    @JsonKey(name: 'recipe_id') required String recipeId,
     required DateTime date,
     required WeekplanRecipesExpanded expand,
   }) = _WeekplanRecipes;

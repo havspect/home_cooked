@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_cooked/main.dart';
+import 'package:home_cooked/pages/collections/collection_add.dart';
 import 'package:home_cooked/pages/collections/collection_page.dart';
 import 'package:home_cooked/pages/home_page.dart';
 import 'package:home_cooked/pages/recipes/recipe_add_page.dart';
@@ -55,10 +56,21 @@ final router = GoRouter(
         builder: (context, state, child) => BottomNavigation(child: child),
         routes: [
           GoRoute(
-            name: 'collections',
-            path: '/collections',
-            builder: (context, state) => const CollectionListPage(),
-          ),
+              name: 'collections',
+              path: '/collections',
+              builder: (context, state) => const CollectionListPage(),
+              routes: [
+                GoRoute(
+                  path: 'add',
+                  name: 'collection-add',
+                  builder: (context, state) => const CollectionAdd(),
+                ),
+                GoRoute(
+                  path: 'details',
+                  name: 'collection-details',
+                  builder: (context, state) => const CollectionAdd(),
+                )
+              ]),
           GoRoute(
               name: 'recipes',
               path: '/recipes',

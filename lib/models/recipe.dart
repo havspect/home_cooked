@@ -8,10 +8,10 @@ class Recipe with _$Recipe {
   factory Recipe(
       {required String id,
       required String title,
-      String? text,
+      String? note,
       String? source,
       String? link,
-      String? image}) = _Recipe;
+      @JsonKey(name: 'image_url') String? ImageUrl}) = _Recipe;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
 }

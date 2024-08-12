@@ -1,6 +1,5 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_cooked/models/recipe.dart';
 import 'package:home_cooked/models/weekplan.dart';
@@ -88,7 +87,7 @@ class _WeekPlanPageState extends ConsumerState<WeekPlanPage> {
                           },
                         );
                       }),
-                  child: Text('Wochenplan wechseln')),
+                  child: const Text('Wochenplan wechseln')),
             ],
           ),
           EasyInfiniteDateTimeLine(

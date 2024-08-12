@@ -21,12 +21,18 @@ Collection _$CollectionFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Collection {
   String get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get owner => throw _privateConstructorUsedError;
+  @JsonKey(name: 'shared_users')
+  List<String> get sharedUsers => throw _privateConstructorUsedError;
   CollectionExpanded? get expand => throw _privateConstructorUsedError;
 
+  /// Serializes this Collection to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Collection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CollectionCopyWith<Collection> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -39,8 +45,9 @@ abstract class $CollectionCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String title,
-      String? description,
+      String name,
+      String owner,
+      @JsonKey(name: 'shared_users') List<String> sharedUsers,
       CollectionExpanded? expand});
 
   $CollectionExpandedCopyWith<$Res>? get expand;
@@ -56,12 +63,15 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Collection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
-    Object? description = freezed,
+    Object? name = null,
+    Object? owner = null,
+    Object? sharedUsers = null,
     Object? expand = freezed,
   }) {
     return _then(_value.copyWith(
@@ -69,14 +79,18 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      sharedUsers: null == sharedUsers
+          ? _value.sharedUsers
+          : sharedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       expand: freezed == expand
           ? _value.expand
           : expand // ignore: cast_nullable_to_non_nullable
@@ -84,6 +98,8 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
     ) as $Val);
   }
 
+  /// Create a copy of Collection
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CollectionExpandedCopyWith<$Res>? get expand {
@@ -107,8 +123,9 @@ abstract class _$$CollectionImplCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      String title,
-      String? description,
+      String name,
+      String owner,
+      @JsonKey(name: 'shared_users') List<String> sharedUsers,
       CollectionExpanded? expand});
 
   @override
@@ -123,12 +140,15 @@ class __$$CollectionImplCopyWithImpl<$Res>
       _$CollectionImpl _value, $Res Function(_$CollectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Collection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = null,
-    Object? title = null,
-    Object? description = freezed,
+    Object? name = null,
+    Object? owner = null,
+    Object? sharedUsers = null,
     Object? expand = freezed,
   }) {
     return _then(_$CollectionImpl(
@@ -136,14 +156,18 @@ class __$$CollectionImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as String,
+      sharedUsers: null == sharedUsers
+          ? _value._sharedUsers
+          : sharedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       expand: freezed == expand
           ? _value.expand
           : expand // ignore: cast_nullable_to_non_nullable
@@ -157,7 +181,12 @@ class __$$CollectionImplCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$CollectionImpl implements _Collection {
   _$CollectionImpl(
-      {required this.id, required this.title, this.description, this.expand});
+      {required this.id,
+      required this.name,
+      required this.owner,
+      @JsonKey(name: 'shared_users') required final List<String> sharedUsers,
+      this.expand})
+      : _sharedUsers = sharedUsers;
 
   factory _$CollectionImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionImplFromJson(json);
@@ -165,15 +194,24 @@ class _$CollectionImpl implements _Collection {
   @override
   final String id;
   @override
-  final String title;
+  final String name;
   @override
-  final String? description;
+  final String owner;
+  final List<String> _sharedUsers;
+  @override
+  @JsonKey(name: 'shared_users')
+  List<String> get sharedUsers {
+    if (_sharedUsers is EqualUnmodifiableListView) return _sharedUsers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sharedUsers);
+  }
+
   @override
   final CollectionExpanded? expand;
 
   @override
   String toString() {
-    return 'Collection(id: $id, title: $title, description: $description, expand: $expand)';
+    return 'Collection(id: $id, name: $name, owner: $owner, sharedUsers: $sharedUsers, expand: $expand)';
   }
 
   @override
@@ -182,17 +220,21 @@ class _$CollectionImpl implements _Collection {
         (other.runtimeType == runtimeType &&
             other is _$CollectionImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            const DeepCollectionEquality()
+                .equals(other._sharedUsers, _sharedUsers) &&
             (identical(other.expand, expand) || other.expand == expand));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description, expand);
+  int get hashCode => Object.hash(runtimeType, id, name, owner,
+      const DeepCollectionEquality().hash(_sharedUsers), expand);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Collection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionImplCopyWith<_$CollectionImpl> get copyWith =>
@@ -209,8 +251,9 @@ class _$CollectionImpl implements _Collection {
 abstract class _Collection implements Collection {
   factory _Collection(
       {required final String id,
-      required final String title,
-      final String? description,
+      required final String name,
+      required final String owner,
+      @JsonKey(name: 'shared_users') required final List<String> sharedUsers,
       final CollectionExpanded? expand}) = _$CollectionImpl;
 
   factory _Collection.fromJson(Map<String, dynamic> json) =
@@ -219,13 +262,19 @@ abstract class _Collection implements Collection {
   @override
   String get id;
   @override
-  String get title;
+  String get name;
   @override
-  String? get description;
+  String get owner;
+  @override
+  @JsonKey(name: 'shared_users')
+  List<String> get sharedUsers;
   @override
   CollectionExpanded? get expand;
+
+  /// Create a copy of Collection
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectionImplCopyWith<_$CollectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -237,11 +286,16 @@ CollectionExpanded _$CollectionExpandedFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CollectionExpanded {
   User get owner => throw _privateConstructorUsedError;
-  List<User>? get users => throw _privateConstructorUsedError;
-  List<Recipe>? get recipes => throw _privateConstructorUsedError;
+  List<Recipe> get recipes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'shared_users')
+  List<User> get sharedUsers => throw _privateConstructorUsedError;
 
+  /// Serializes this CollectionExpanded to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CollectionExpanded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CollectionExpandedCopyWith<CollectionExpanded> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -252,7 +306,10 @@ abstract class $CollectionExpandedCopyWith<$Res> {
           CollectionExpanded value, $Res Function(CollectionExpanded) then) =
       _$CollectionExpandedCopyWithImpl<$Res, CollectionExpanded>;
   @useResult
-  $Res call({User owner, List<User>? users, List<Recipe>? recipes});
+  $Res call(
+      {User owner,
+      List<Recipe> recipes,
+      @JsonKey(name: 'shared_users') List<User> sharedUsers});
 
   $UserCopyWith<$Res> get owner;
 }
@@ -267,29 +324,33 @@ class _$CollectionExpandedCopyWithImpl<$Res, $Val extends CollectionExpanded>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CollectionExpanded
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? owner = null,
-    Object? users = freezed,
-    Object? recipes = freezed,
+    Object? recipes = null,
+    Object? sharedUsers = null,
   }) {
     return _then(_value.copyWith(
       owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as User,
-      users: freezed == users
-          ? _value.users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
-      recipes: freezed == recipes
+      recipes: null == recipes
           ? _value.recipes
           : recipes // ignore: cast_nullable_to_non_nullable
-              as List<Recipe>?,
+              as List<Recipe>,
+      sharedUsers: null == sharedUsers
+          ? _value.sharedUsers
+          : sharedUsers // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ) as $Val);
   }
 
+  /// Create a copy of CollectionExpanded
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserCopyWith<$Res> get owner {
@@ -307,7 +368,10 @@ abstract class _$$CollectionExpandedImplCopyWith<$Res>
       __$$CollectionExpandedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User owner, List<User>? users, List<Recipe>? recipes});
+  $Res call(
+      {User owner,
+      List<Recipe> recipes,
+      @JsonKey(name: 'shared_users') List<User> sharedUsers});
 
   @override
   $UserCopyWith<$Res> get owner;
@@ -321,26 +385,28 @@ class __$$CollectionExpandedImplCopyWithImpl<$Res>
       $Res Function(_$CollectionExpandedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CollectionExpanded
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? owner = null,
-    Object? users = freezed,
-    Object? recipes = freezed,
+    Object? recipes = null,
+    Object? sharedUsers = null,
   }) {
     return _then(_$CollectionExpandedImpl(
       owner: null == owner
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as User,
-      users: freezed == users
-          ? _value._users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<User>?,
-      recipes: freezed == recipes
+      recipes: null == recipes
           ? _value._recipes
           : recipes // ignore: cast_nullable_to_non_nullable
-              as List<Recipe>?,
+              as List<Recipe>,
+      sharedUsers: null == sharedUsers
+          ? _value._sharedUsers
+          : sharedUsers // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ));
   }
 }
@@ -351,39 +417,36 @@ class __$$CollectionExpandedImplCopyWithImpl<$Res>
 class _$CollectionExpandedImpl implements _CollectionExpanded {
   _$CollectionExpandedImpl(
       {required this.owner,
-      final List<User>? users,
-      final List<Recipe>? recipes})
-      : _users = users,
-        _recipes = recipes;
+      required final List<Recipe> recipes,
+      @JsonKey(name: 'shared_users') required final List<User> sharedUsers})
+      : _recipes = recipes,
+        _sharedUsers = sharedUsers;
 
   factory _$CollectionExpandedImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionExpandedImplFromJson(json);
 
   @override
   final User owner;
-  final List<User>? _users;
+  final List<Recipe> _recipes;
   @override
-  List<User>? get users {
-    final value = _users;
-    if (value == null) return null;
-    if (_users is EqualUnmodifiableListView) return _users;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<Recipe>? _recipes;
-  @override
-  List<Recipe>? get recipes {
-    final value = _recipes;
-    if (value == null) return null;
+  List<Recipe> get recipes {
     if (_recipes is EqualUnmodifiableListView) return _recipes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_recipes);
+  }
+
+  final List<User> _sharedUsers;
+  @override
+  @JsonKey(name: 'shared_users')
+  List<User> get sharedUsers {
+    if (_sharedUsers is EqualUnmodifiableListView) return _sharedUsers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_sharedUsers);
   }
 
   @override
   String toString() {
-    return 'CollectionExpanded(owner: $owner, users: $users, recipes: $recipes)';
+    return 'CollectionExpanded(owner: $owner, recipes: $recipes, sharedUsers: $sharedUsers)';
   }
 
   @override
@@ -392,19 +455,22 @@ class _$CollectionExpandedImpl implements _CollectionExpanded {
         (other.runtimeType == runtimeType &&
             other is _$CollectionExpandedImpl &&
             (identical(other.owner, owner) || other.owner == owner) &&
-            const DeepCollectionEquality().equals(other._users, _users) &&
-            const DeepCollectionEquality().equals(other._recipes, _recipes));
+            const DeepCollectionEquality().equals(other._recipes, _recipes) &&
+            const DeepCollectionEquality()
+                .equals(other._sharedUsers, _sharedUsers));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       owner,
-      const DeepCollectionEquality().hash(_users),
-      const DeepCollectionEquality().hash(_recipes));
+      const DeepCollectionEquality().hash(_recipes),
+      const DeepCollectionEquality().hash(_sharedUsers));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CollectionExpanded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionExpandedImplCopyWith<_$CollectionExpandedImpl> get copyWith =>
@@ -422,8 +488,9 @@ class _$CollectionExpandedImpl implements _CollectionExpanded {
 abstract class _CollectionExpanded implements CollectionExpanded {
   factory _CollectionExpanded(
       {required final User owner,
-      final List<User>? users,
-      final List<Recipe>? recipes}) = _$CollectionExpandedImpl;
+      required final List<Recipe> recipes,
+      @JsonKey(name: 'shared_users')
+      required final List<User> sharedUsers}) = _$CollectionExpandedImpl;
 
   factory _CollectionExpanded.fromJson(Map<String, dynamic> json) =
       _$CollectionExpandedImpl.fromJson;
@@ -431,11 +498,15 @@ abstract class _CollectionExpanded implements CollectionExpanded {
   @override
   User get owner;
   @override
-  List<User>? get users;
+  List<Recipe> get recipes;
   @override
-  List<Recipe>? get recipes;
+  @JsonKey(name: 'shared_users')
+  List<User> get sharedUsers;
+
+  /// Create a copy of CollectionExpanded
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CollectionExpandedImplCopyWith<_$CollectionExpandedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -450,8 +521,12 @@ mixin _$NewCollection {
   String? get description => throw _privateConstructorUsedError;
   String get owner => throw _privateConstructorUsedError;
 
+  /// Serializes this NewCollection to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NewCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NewCollectionCopyWith<NewCollection> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -475,6 +550,8 @@ class _$NewCollectionCopyWithImpl<$Res, $Val extends NewCollection>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NewCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -518,6 +595,8 @@ class __$$NewCollectionImplCopyWithImpl<$Res>
       _$NewCollectionImpl _value, $Res Function(_$NewCollectionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NewCollection
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -574,11 +653,13 @@ class _$NewCollectionImpl implements _NewCollection {
             (identical(other.owner, owner) || other.owner == owner));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, description, owner);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NewCollection
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NewCollectionImplCopyWith<_$NewCollectionImpl> get copyWith =>
@@ -607,8 +688,11 @@ abstract class _NewCollection implements NewCollection {
   String? get description;
   @override
   String get owner;
+
+  /// Create a copy of NewCollection
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NewCollectionImplCopyWith<_$NewCollectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

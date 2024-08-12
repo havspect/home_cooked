@@ -10,13 +10,13 @@ part 'collection_list_provider.g.dart';
 class CollectionList extends _$CollectionList {
   // TODO: @request.auth.id ?= users.id
 
-  Future<List<Collection>> _getAllCollections() async {
+  Future<List<Collection>> _getAllCollectionsForUser() async {
     final PocketBase pb = getIt<PocketBase>();
 
     try {
       final res = await pb
           .collection('collections')
-          .getList(expand: 'recipes,owner,users');
+          .getList(expand: 'owner,recipes,shared_users');
 
       final collections =
           res.items.map((e) => Collection.fromJson(e.toJson())).toList();
@@ -30,7 +30,7 @@ class CollectionList extends _$CollectionList {
 
   @override
   Future<List<Collection>> build() async {
-    return await _getAllCollections();
+    return await _getAllCollectionsForUser();
   }
 
   Future<void> addCollection(NewCollection collection) async {

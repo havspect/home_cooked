@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_cooked/main.dart';
@@ -30,7 +32,7 @@ class _SignInPageState extends State<SignInPage> {
             child: Form(
       key: _formKey,
       child: Container(
-        constraints: new BoxConstraints(maxWidth: 400),
+        constraints: const BoxConstraints(maxWidth: 400),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -79,7 +81,7 @@ class _SignInPageState extends State<SignInPage> {
                       // If the form is valid, display a snackbar. In the real world,
                       // you'd often call a server or save the information in a database.
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Processing Data')),
+                        const SnackBar(content: Text('Processing Data...')),
                       );
 
                       final pb = getIt<PocketBase>();
@@ -88,6 +90,7 @@ class _SignInPageState extends State<SignInPage> {
                         await pb.collection('users').authWithPassword(
                             email.value.text, password.value.text);
                         context.pushNamed('collections');
+                        ScaffoldMessenger.of(context).clearSnackBars();
                       } catch (e) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Failed to log in.')),
