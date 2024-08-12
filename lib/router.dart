@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:home_cooked/features/recipe/provider/recipes.dart';
+import 'package:home_cooked/features/recipe/screens/recipe.dart';
 import 'package:home_cooked/main.dart';
-import 'package:home_cooked/pages/collections/collection_add.dart';
-import 'package:home_cooked/pages/collections/collection_page.dart';
-import 'package:home_cooked/pages/home_page.dart';
-import 'package:home_cooked/pages/recipes/recipe_add_page.dart';
-import 'package:home_cooked/pages/recipes/recipe_page.dart';
-import 'package:home_cooked/pages/sign_in_page.dart';
-import 'package:home_cooked/pages/sign_up_page.dart';
+import 'package:home_cooked/features/collection/screens/collection_add.dart';
+import 'package:home_cooked/features/collection/screens/collections.dart';
+import 'package:home_cooked/features/website/home_page.dart';
+import 'package:home_cooked/features/recipe/screens/recipe_add.dart';
+import 'package:home_cooked/features/auth/screens/sign_in_page.dart';
+import 'package:home_cooked/features/auth/screens/sign_up_page.dart';
 import 'package:home_cooked/pages/weekplan/weekplan_page.dart';
 import 'package:home_cooked/widgets/bottom_navigation.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -72,9 +73,9 @@ final router = GoRouter(
                 )
               ]),
           GoRoute(
-              name: 'recipes',
-              path: '/recipes',
-              builder: (context, state) => const RecipeListPage(),
+              name: 'recipe',
+              path: '/recipe',
+              builder: (context, state) => const RecipePage(),
               routes: [
                 GoRoute(
                   path: 'add',
@@ -82,12 +83,6 @@ final router = GoRouter(
                   // TODO: Add from link & Pic
                   builder: (context, state) => const RecipeAddPage(),
                 ),
-                GoRoute(
-                  path: 'details',
-                  name: 'recipe-details',
-                  // TODO: Add Recipe Details
-                  builder: (context, state) => const RecipeAddPage(),
-                )
               ]),
           GoRoute(
             name: 'weekplan',
