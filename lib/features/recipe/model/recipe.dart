@@ -11,7 +11,7 @@ class Recipe with _$Recipe {
       String? note,
       String? source,
       String? link,
-      @JsonKey(name: 'image_url') String? ImageUrl}) = _Recipe;
+      @JsonKey(name: 'image_url') String? imageUrl}) = _Recipe;
 
   factory Recipe.fromJson(Map<String, dynamic> json) => _$RecipeFromJson(json);
 }
@@ -21,7 +21,7 @@ class NewRecipe with _$NewRecipe {
   factory NewRecipe(
       {required String title,
       String? link,
-      String? text,
+      String? note,
       String? source}) = _NewRecipe;
 
   factory NewRecipe.fromJson(Map<String, dynamic> json) =>

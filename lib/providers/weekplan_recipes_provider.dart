@@ -1,5 +1,5 @@
 import 'package:home_cooked/main.dart';
-import 'package:home_cooked/models/weekplan_recipes.dart';
+import 'package:home_cooked/features/weekplan/model/weekplan_recipes.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

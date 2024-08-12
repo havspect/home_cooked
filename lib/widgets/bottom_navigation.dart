@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:home_cooked/pages/home_page.dart';
+import 'package:home_cooked/features/website/home_page.dart';
 import 'package:navbar_router/navbar_router.dart';
 
 class BottomNavigation extends StatefulWidget {

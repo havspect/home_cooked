@@ -92,6 +92,7 @@ class _SignInPageState extends State<SignInPage> {
                         context.pushNamed('collections');
                         ScaffoldMessenger.of(context).clearSnackBars();
                       } catch (e) {
+                        print(e);
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(content: Text('Failed to log in.')),
                         );

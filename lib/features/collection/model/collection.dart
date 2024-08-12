@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:home_cooked/models/recipe.dart';
-import 'package:home_cooked/models/user.dart';
+import 'package:home_cooked/features/recipe/model/recipe.dart';
+import 'package:home_cooked/features/user/model/user.dart';
 
 part 'collection.freezed.dart';
 part 'collection.g.dart';
@@ -10,9 +10,10 @@ class Collection with _$Collection {
   @JsonSerializable(explicitToJson: true)
   factory Collection({
     required String id,
-    required String name,
+    required String title,
     required String owner,
-    @JsonKey(name: 'shared_users') required List<String> sharedUsers,
+    List<String>? recipes,
+    @JsonKey(name: 'shared_users', required: false) List<String>? sharedUsers,
     CollectionExpanded? expand,
   }) = _Collection;
 
@@ -25,8 +26,8 @@ class CollectionExpanded with _$CollectionExpanded {
   @JsonSerializable(explicitToJson: true)
   factory CollectionExpanded({
     required User owner,
-    required List<Recipe> recipes,
-    @JsonKey(name: 'shared_users') required List<User> sharedUsers,
+    List<Recipe>? recipes,
+    @JsonKey(name: 'shared_users') List<User>? sharedUsers,
   }) = _CollectionExpanded;
 
   factory CollectionExpanded.fromJson(Map<String, dynamic> json) =>

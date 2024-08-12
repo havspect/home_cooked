@@ -1,9 +1,9 @@
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:home_cooked/models/recipe.dart';
-import 'package:home_cooked/models/weekplan.dart';
-import 'package:home_cooked/models/weekplan_recipes.dart';
+import 'package:home_cooked/features/recipe/model/recipe.dart';
+import 'package:home_cooked/features/weekplan/model/weekplan.dart';
+import 'package:home_cooked/features/weekplan/model/weekplan_recipes.dart';
 import 'package:home_cooked/providers/weekplan_list_provider.dart';
 import 'package:home_cooked/providers/weekplan_recipes_provider.dart';
 import 'package:intl/intl.dart';

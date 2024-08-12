@@ -12,7 +12,7 @@ _$RecipeImpl _$$RecipeImplFromJson(Map<String, dynamic> json) => _$RecipeImpl(
       note: json['note'] as String?,
       source: json['source'] as String?,
       link: json['link'] as String?,
-      ImageUrl: json['image_url'] as String?,
+      imageUrl: json['image_url'] as String?,
     );
 
 Map<String, dynamic> _$$RecipeImplToJson(_$RecipeImpl instance) =>
@@ -22,14 +22,14 @@ Map<String, dynamic> _$$RecipeImplToJson(_$RecipeImpl instance) =>
       'note': instance.note,
       'source': instance.source,
       'link': instance.link,
-      'image_url': instance.ImageUrl,
+      'image_url': instance.imageUrl,
     };
 
 _$NewRecipeImpl _$$NewRecipeImplFromJson(Map<String, dynamic> json) =>
     _$NewRecipeImpl(
       title: json['title'] as String,
       link: json['link'] as String?,
-      text: json['text'] as String?,
+      note: json['note'] as String?,
       source: json['source'] as String?,
     );
 
@@ -37,6 +37,6 @@ Map<String, dynamic> _$$NewRecipeImplToJson(_$NewRecipeImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'link': instance.link,
-      'text': instance.text,
+      'note': instance.note,
       'source': instance.source,
     };

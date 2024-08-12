@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'collection_list_provider.dart';
+part of 'collections.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$collectionListHash() => r'db257bc12ac0cbe752a89efc8bf6115da2649083';
+String _$collectionListHash() => r'fc87c77e6f1974605b4fd18c4089e635bbdbe76a';
 
 /// See also [CollectionList].
 @ProviderFor(CollectionList)

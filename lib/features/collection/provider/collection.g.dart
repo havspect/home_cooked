@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'recipe_provider.dart';
+part of 'collection.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$recipeEntryHash() => r'0296115135bc2e724b742cd4f580063dcda0b61c';
+String _$collectionEntryHash() => r'c92e73a8272da6493b9d8a0eeb61ac09f551a788';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,35 +29,36 @@ class _SystemHash {
   }
 }
 
-abstract class _$RecipeEntry extends BuildlessAutoDisposeAsyncNotifier<Recipe> {
+abstract class _$CollectionEntry
+    extends BuildlessAutoDisposeAsyncNotifier<Collection> {
   late final String id;
 
-  FutureOr<Recipe> build(
+  FutureOr<Collection> build(
     String id,
   );
 }
 
-/// See also [RecipeEntry].
-@ProviderFor(RecipeEntry)
-const recipeEntryProvider = RecipeEntryFamily();
+/// See also [CollectionEntry].
+@ProviderFor(CollectionEntry)
+const collectionEntryProvider = CollectionEntryFamily();
 
-/// See also [RecipeEntry].
-class RecipeEntryFamily extends Family<AsyncValue<Recipe>> {
-  /// See also [RecipeEntry].
-  const RecipeEntryFamily();
+/// See also [CollectionEntry].
+class CollectionEntryFamily extends Family<AsyncValue<Collection>> {
+  /// See also [CollectionEntry].
+  const CollectionEntryFamily();
 
-  /// See also [RecipeEntry].
-  RecipeEntryProvider call(
+  /// See also [CollectionEntry].
+  CollectionEntryProvider call(
     String id,
   ) {
-    return RecipeEntryProvider(
+    return CollectionEntryProvider(
       id,
     );
   }
 
   @override
-  RecipeEntryProvider getProviderOverride(
-    covariant RecipeEntryProvider provider,
+  CollectionEntryProvider getProviderOverride(
+    covariant CollectionEntryProvider provider,
   ) {
     return call(
       provider.id,
@@ -76,30 +77,30 @@ class RecipeEntryFamily extends Family<AsyncValue<Recipe>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'recipeEntryProvider';
+  String? get name => r'collectionEntryProvider';
 }
 
-/// See also [RecipeEntry].
-class RecipeEntryProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<RecipeEntry, Recipe> {
-  /// See also [RecipeEntry].
-  RecipeEntryProvider(
+/// See also [CollectionEntry].
+class CollectionEntryProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<CollectionEntry, Collection> {
+  /// See also [CollectionEntry].
+  CollectionEntryProvider(
     String id,
   ) : this._internal(
-          () => RecipeEntry()..id = id,
-          from: recipeEntryProvider,
-          name: r'recipeEntryProvider',
+          () => CollectionEntry()..id = id,
+          from: collectionEntryProvider,
+          name: r'collectionEntryProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$recipeEntryHash,
-          dependencies: RecipeEntryFamily._dependencies,
+                  : _$collectionEntryHash,
+          dependencies: CollectionEntryFamily._dependencies,
           allTransitiveDependencies:
-              RecipeEntryFamily._allTransitiveDependencies,
+              CollectionEntryFamily._allTransitiveDependencies,
           id: id,
         );
 
-  RecipeEntryProvider._internal(
+  CollectionEntryProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -112,8 +113,8 @@ class RecipeEntryProvider
   final String id;
 
   @override
-  FutureOr<Recipe> runNotifierBuild(
-    covariant RecipeEntry notifier,
+  FutureOr<Collection> runNotifierBuild(
+    covariant CollectionEntry notifier,
   ) {
     return notifier.build(
       id,
@@ -121,10 +122,10 @@ class RecipeEntryProvider
   }
 
   @override
-  Override overrideWith(RecipeEntry Function() create) {
+  Override overrideWith(CollectionEntry Function() create) {
     return ProviderOverride(
       origin: this,
-      override: RecipeEntryProvider._internal(
+      override: CollectionEntryProvider._internal(
         () => create()..id = id,
         from: from,
         name: null,
@@ -137,13 +138,14 @@ class RecipeEntryProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<RecipeEntry, Recipe> createElement() {
-    return _RecipeEntryProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<CollectionEntry, Collection>
+      createElement() {
+    return _CollectionEntryProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is RecipeEntryProvider && other.id == id;
+    return other is CollectionEntryProvider && other.id == id;
   }
 
   @override
@@ -155,18 +157,18 @@ class RecipeEntryProvider
   }
 }
 
-mixin RecipeEntryRef on AutoDisposeAsyncNotifierProviderRef<Recipe> {
+mixin CollectionEntryRef on AutoDisposeAsyncNotifierProviderRef<Collection> {
   /// The parameter `id` of this provider.
   String get id;
 }
 
-class _RecipeEntryProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<RecipeEntry, Recipe>
-    with RecipeEntryRef {
-  _RecipeEntryProviderElement(super.provider);
+class _CollectionEntryProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<CollectionEntry, Collection>
+    with CollectionEntryRef {
+  _CollectionEntryProviderElement(super.provider);
 
   @override
-  String get id => (origin as RecipeEntryProvider).id;
+  String get id => (origin as CollectionEntryProvider).id;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

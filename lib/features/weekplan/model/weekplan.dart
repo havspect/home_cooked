@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:home_cooked/models/user.dart';
-import 'package:home_cooked/models/weekplan_recipes.dart';
+import 'package:home_cooked/features/user/model/user.dart';
+import 'package:home_cooked/features/weekplan/model/weekplan_recipes.dart';
 
 part 'weekplan.freezed.dart';
 part 'weekplan.g.dart';

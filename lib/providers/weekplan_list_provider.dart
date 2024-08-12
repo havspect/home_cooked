@@ -1,6 +1,6 @@
 // Necessary for code-generation to work
 import 'package:home_cooked/main.dart';
-import 'package:home_cooked/models/weekplan.dart';
+import 'package:home_cooked/features/weekplan/model/weekplan.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

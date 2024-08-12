@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:home_cooked/main.dart';
-import 'package:home_cooked/models/user.dart';
+import 'package:home_cooked/features/user/model/user.dart';
 import 'package:pocketbase/pocketbase.dart';
 
 class SignUpPage extends StatefulWidget {

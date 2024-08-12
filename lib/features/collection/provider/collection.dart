@@ -1,9 +1,9 @@
 import 'package:home_cooked/main.dart';
-import 'package:home_cooked/models/collection.dart';
+import 'package:home_cooked/features/collection/model/collection.dart';
 import 'package:pocketbase/pocketbase.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'collection_provider.g.dart';
+part 'collection.g.dart';
 
 @riverpod
 class CollectionEntry extends _$CollectionEntry {

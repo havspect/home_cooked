@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:home_cooked/models/recipe.dart';
-import 'package:home_cooked/providers/recipe_list_provider.dart';
+import 'package:home_cooked/features/recipe/model/recipe.dart';
+import 'package:home_cooked/features/recipe/provider/recipe.dart';
 import 'package:http/http.dart';
 import 'package:cross_file_image/cross_file_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -50,8 +50,8 @@ class _RecipeAddState extends ConsumerState<RecipeAddPage> {
 
       setState(() {
         _isExternal = true;
-        if (widget.recipe!.image != null) {
-          _externalImage = widget.recipe!.image;
+        if (widget.recipe!.imageUrl != null) {
+          _externalImage = widget.recipe!.imageUrl;
         }
       });
     }
@@ -224,11 +224,9 @@ class _RecipeAddState extends ConsumerState<RecipeAddPage> {
                     title: _titleController.text,
                     link: _linkController.text,
                     source: _sourceController.text,
-                    text: _descController.text);
+                    note: _descController.text);
 
-                await ref
-                    .read(recipeListProvider.notifier)
-                    .addRecipe(newRecipe, bytes);
+                await createRecipe(newRecipe);
 
                 const sucessSnackBar = SnackBar(
                   content: Text('Sucess.'),
